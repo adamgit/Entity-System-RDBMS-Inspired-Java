@@ -1,7 +1,7 @@
 package com.wikidot.entitysystems.rdbmswithcodeinsystems.tests;
 
-import com.entitysystems.rdbmswithcodeinsystems.examplecomponents.Position;
 import com.wikidot.entitysystems.rdbmswithcodeinsystems.EntityManager;
+import com.wikidot.entitysystems.rdbmswithcodeinsystems.examplecomponents.Position;
 
 /**
  * Very brief test to check that the ES implementation is compiling and running OK
