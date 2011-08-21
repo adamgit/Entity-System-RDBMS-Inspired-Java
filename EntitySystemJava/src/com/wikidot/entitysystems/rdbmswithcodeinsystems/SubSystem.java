@@ -6,5 +6,5 @@ package com.wikidot.entitysystems.rdbmswithcodeinsystems;
 
 public interface SubSystem
 {
-	public void processOneGameTick();
+	public void processOneGameTick( long lastFrameTime );
 }
