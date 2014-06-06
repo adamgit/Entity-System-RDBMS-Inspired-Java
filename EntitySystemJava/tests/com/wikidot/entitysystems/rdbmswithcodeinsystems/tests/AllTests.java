@@ -5,7 +5,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ TestKillEntity.class, TestPosition.class })
+@SuiteClasses({ TestComponentAccess.class, TestKillEntity.class, TestPosition.class })
 public class AllTests {
 
 }
