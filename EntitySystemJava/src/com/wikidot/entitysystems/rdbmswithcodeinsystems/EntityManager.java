@@ -1,4 +1,5 @@
 package com.wikidot.entitysystems.rdbmswithcodeinsystems;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -42,10 +43,15 @@ public class EntityManager
 	{
 		HashMap<Integer, ? extends Component> store = componentStores.get( componentType );
 		
-		if( store == null)
-	   	return new LinkedList<T>();
-		
-		return (List<T>) store.values();
+		if( store == null )
+		{
+			return new LinkedList<T>();
+		}
+		else
+		{
+			List<T> result = new ArrayList<T>((java.util.Collection<T>)store.values());
+			return result;
+		}
 	}
 	
 	public <T extends Component> Set<Integer> getAllEntitiesPossessingComponent( Class<T> componentType )
@@ -91,11 +97,15 @@ public class EntityManager
 		}
 	}
 	
-	public void killEntity( int entity )
+	public void killEntity( Integer entity ) // Pass as an object to remove key instead of index
 	{
 		synchronized( this ) // prevent it generating two entities with same ID at once
 		{
 			allEntities.remove(entity);
+			for( HashMap<Integer, ? extends Component> store : componentStores.values() )
+			{
+				store.remove(entity);
+			}
 		}
 	}
 	
