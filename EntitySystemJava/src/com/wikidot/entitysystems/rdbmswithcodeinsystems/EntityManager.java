@@ -91,7 +91,7 @@ public class EntityManager
 		}
 	}
 	
-	public void killEntity( int entity )
+	public void killEntity( Integer entity ) // Pass as an object to remove key instead of index
 	{
 		synchronized( this ) // prevent it generating two entities with same ID at once
 		{
