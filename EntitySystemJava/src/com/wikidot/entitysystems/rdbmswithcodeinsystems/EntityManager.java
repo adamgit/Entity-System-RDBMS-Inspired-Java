@@ -102,6 +102,10 @@ public class EntityManager
 		synchronized( this ) // prevent it generating two entities with same ID at once
 		{
 			allEntities.remove(entity);
+			for( HashMap<Integer, ? extends Component> store : componentStores.values() )
+			{
+				store.remove(entity);
+			}
 		}
 	}
 	
