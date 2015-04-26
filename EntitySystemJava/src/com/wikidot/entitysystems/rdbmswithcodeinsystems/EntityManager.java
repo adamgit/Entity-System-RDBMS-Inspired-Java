@@ -113,20 +113,20 @@ public class EntityManager
 	{
 		synchronized( this ) // prevent it generating two entities with same ID at once
 		{
-		if( lowestUnassignedEntityID < Integer.MAX_VALUE )
-		{
-			return lowestUnassignedEntityID++;
-		}
-		else
-		{
-			for( int i=1; i<Integer.MAX_VALUE; i++ )
+			if( lowestUnassignedEntityID < Integer.MAX_VALUE )
 			{
-				if( ! allEntities.contains(i) )
-					return i;
+				return lowestUnassignedEntityID++;
 			}
+			else
+			{
+				for( int i=1; i<Integer.MAX_VALUE; i++ )
+				{
+					if( ! allEntities.contains(i) )
+						return i;
+				}
 			
-			throw new Error("ERROR: no available Entity IDs; too many entities!" );
-		}
+				throw new Error("ERROR: no available Entity IDs; too many entities!" );
+			}
 		}
 	}
 }
