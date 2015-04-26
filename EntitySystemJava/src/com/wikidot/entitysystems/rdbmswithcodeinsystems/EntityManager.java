@@ -17,12 +17,12 @@ public class EntityManager
 {
 	int lowestUnassignedEntityID=1;
 	List<Integer> allEntities;
-	HashMap<Class, HashMap<Integer, ? extends Component>> componentStores;
+	HashMap<Class<?>, HashMap<Integer, ? extends Component>> componentStores;
 	
 	public EntityManager()
 	{
 		allEntities = new LinkedList<Integer>();
-		componentStores = new HashMap<Class, HashMap<Integer,? extends Component>>();
+		componentStores = new HashMap<Class<?>, HashMap<Integer,? extends Component>>();
 	}
 	
 	public <T extends Component> T getComponent( int entity, Class<T> componentType)
@@ -32,7 +32,7 @@ public class EntityManager
 	   if( store == null)
 	   	throw new IllegalArgumentException( "GET FAIL: there are no entities with a Component of class: "+componentType );
 	   
-	   T result = (T) store.get( entity );
+	   T result = componentType.cast(store.get(entity));
 	   if( result == null )
 	      throw new IllegalArgumentException( "GET FAIL: "+entity+" does not possess Component of class\n   missing: "+componentType );
 
